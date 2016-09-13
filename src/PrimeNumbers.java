@@ -7,18 +7,22 @@ public class PrimeNumbers {
         int startingValue;
         int endingValue;
         PrimeGenerator generator = new PrimeGenerator();
-        
+                
         if (args.length != 2) {
-            throw new IllegalArgumentException("Input must be two integers.");
+            System.err.println("Input must be two integers.");
         }
         try {
             startingValue = Integer.parseInt(args[0]);
             endingValue = Integer.parseInt(args[1]);
             
-            generator.generate(startingValue, endingValue);
+            List<Integer> primes = generator.generate(startingValue, endingValue);
+            
+            for(int prime : primes) {
+                System.out.println(prime);
+            }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Input must be two integers.");
-        }
+            System.err.println("Input must be two integers.");
+        } catch (ArrayIndexOutOfBoundsException e) {}
     }
 
 }
